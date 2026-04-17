@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Prestadores — Patagonia Pass</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    .reg-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 24px; position: relative; overflow: hidden; }
+    .reg-card { width: 100%; max-width: 600px; background: rgba(255,255,255,0.07); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.12); border-radius: 24px; padding: 40px; position: relative; z-index: 3; box-shadow: var(--shadow); }
+    .reg-header { text-align: center; margin-bottom: 32px; }
+    .reg-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; color: #fff; }
+    .reg-header p { color: var(--muted); font-size: 0.9rem; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .form-control { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; color: #fff; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.2s; }
+    .form-control:focus { border-color: var(--teal); }
+    .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 16px; }
+    .btn-reg { width: 100%; background: linear-gradient(135deg, var(--teal), #00b4d8); color: var(--dark); border: none; border-radius: 12px; padding: 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px; }
+    .btn-reg:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,200,0.3); }
+    .reg-footer { text-align: center; margin-top: 24px; font-size: 0.85rem; color: var(--muted); }
+    .reg-footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
+    .steps-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
+    .step-dot { width: 40px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+    .step-dot.active { background: var(--teal); }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-icon">
+          <polygon points="20,3 37,35 3,35" stroke="#00e5c8" stroke-width="2" fill="none"/>
+        </svg>
+        <span>PATAGONIA<strong>PASS</strong></span>
+      </a>
+      <a href="login.html" class="btn-intranet" style="margin-left:auto">Ya tengo cuenta</a>
+    </div>
+  </nav>
+
+  <section class="reg-section">
+    <div class="hero-slide active" style="background-image: url('assets/images/sunset-bg.jpg'); opacity: 0.3; filter: blur(4px);"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="reg-card reveal-up visible">
+      <div class="reg-header">
+        <h1>Únete a la Red</h1>
+        <p>Comienza a digitalizar tu oferta hoy mismo</p>
+      </div>
+
+      <div class="steps-indicator">
+        <div class="step-dot active" id="dot1"></div>
+        <div class="step-dot" id="dot2"></div>
+        <div class="step-dot" id="dot3"></div>
+      </div>
+
+      <form id="regForm">
+        <!-- Paso 1: Datos Básicos -->
+        <div class="form-step active" id="step1">
+          <div class="form-group">
+            <label>Nombre Completo / Empresa</label>
+            <input type="text" class="form-control" placeholder="Ej: Juan Pérez o Turismo Austral" required>
+          </div>
+          <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" class="form-control" placeholder="nombre@ejemplo.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono de Contacto</label>
+            <input type="tel" class="form-control" placeholder="+56 9 1234 5678" required>
+          </div>
+          <button type="button" class="btn-reg" onclick="nextStep(2)">Continuar</button>
+        </div>
+
+        <!-- Paso 2: Servicio -->
+        <div class="form-step" id="step2">
+          <div class="form-group">
+            <label>Tipo de Servicio</label>
+            <select class="form-control form-select" required>
+              <option value="">Selecciona una categoría</option>
+              <option value="guia">Guía Turístico</option>
+              <option value="transporte">Transporte / Traslado</option>
+              <option value="gastronomia">Gastronomía Local</option>
+              <option value="alojamiento">Alojamiento (Próximamente)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ubicación Base</label>
+            <select class="form-control form-select" required>
+              <option value="punta-arenas">Punta Arenas</option>
+              <option value="puerto-natales">Puerto Natales</option>
+              <option value="porvenir">Porvenir</option>
+              <option value="puerto-williams">Puerto Williams</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Breve descripción de tu oferta</label>
+            <textarea class="form-control" rows="3" placeholder="Cuéntanos qué experiencias ofreces..."></textarea>
+          </div>
+          <div style="display:flex; gap:12px;">
+            <button type="button" class="btn-reg" style="background:rgba(255,255,255,0.1); color:#fff;" onclick="nextStep(1)">Atrás</button>
+            <button type="button" class="btn-reg" onclick="nextStep(3)">Continuar</button>
+          </div>
+        </div>
+
+        <!-- Paso 3: Seguridad -->
+        <div class="form-step" id="step3">
+          <div class="form-group">
+            <label>Crea tu Contraseña</label>
+            <input type="password" class="form-control" placeholder="••••••••" required>
+          </div>
+          <div class="form-group">
+            <label>Confirma Contraseña</label>
+            <input type="password" class="form-control" placeholder="••••••••" required>
+          </div>
+          <div class="form-group" style="display:flex; gap:10px; align-items:flex-start; margin-top:20px;">
+            <input type="checkbox" id="terms" style="margin-top:4px;" required>
+            <label for="terms" style="text-transform:none; color:var(--muted); font-size:0.75rem;">Acepto los términos de servicio y la política de privacidad de Patagonia Pass.</label>
+          </div>
+          <div style="display:flex; gap:12px;">
+            <button type="button" class="btn-reg" style="background:rgba(255,255,255,0.1); color:#fff;" onclick="nextStep(2)">Atrás</button>
+            <button type="submit" class="btn-reg">Finalizar Registro</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="reg-footer">
+        ¿Ya eres parte? <a href="login.html">Inicia sesión aquí</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function nextStep(step) {
+      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.step-dot').forEach(d => d.classList.remove('active'));
+      
+      document.getElementById('step' + step).classList.add('active');
+      for(let i=1; i<=step; i++) {
+        document.getElementById('dot' + i).classList.add('active');
+      }
+    }
+
+    document.getElementById('regForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.innerHTML = 'Procesando...';
+      btn.disabled = true;
+      setTimeout(() => {
+        alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
+        window.location.href = 'login.html';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

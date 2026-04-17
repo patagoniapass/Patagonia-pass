@@ -1,248 +1,457 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patagonia Pass - El acceso inteligente a experiencias inolvidables</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patagonia Pass — El acceso inteligente a experiencias inolvidables</title>
+  <meta name="description" content="Planifica tu aventura en la Patagonia con IA. Guías locales, transporte y gastronomía auténtica en un solo itinerario." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- ============== HEADER ============== -->
-    <header>
-        <div class="header-content">
-            <a href="#" class="logo">
-                <img src="assets/images/logo.png" alt="Patagonia Pass Logo" class="logo-icon">
-                <span class="logo-text">PATAGONIA<span class="pass">PASS</span></span>
-            </a>
-            <nav>
-                <a href="#inicio">INICIO</a>
-                <a href="#nosotros">NOSOTROS</a>
-                <a href="#como">CÓMO FUNCIONA</a>
-                <a href="#prestadores">PRESTADORES</a>
-                <a href="login.html" class="btn-acceso">Acceso Intranet</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- ============== HERO SECTION ============== -->
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Viaja mejor con experiencias auténticas de locales, <span class="highlight"> organizadas con tecnología.</span></h1>
-                <p>Planifica tu aventura con IA y apoya directamente a los prestadores locales.</p>
+  <!-- ========== LOADER ========== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <svg class="loader-logo" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="30,4 56,52 4,52" stroke="#00e5c8" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+        <polygon points="30,18 46,46 14,46" stroke="#00e5c8" stroke-width="1.5" fill="none" opacity="0.5"/>
+      </svg>
+      <span class="loader-text">PATAGONIA PASS</span>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
 
-                <div class="hero-input-box">
-                    <div class="input-label">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm3.5-9c.8 0 1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5-1.5.7-1.5 1.5.7 1.5 1.5 1.5zm-7 0c.8 0 1.5-.7 1.5-1.5S9.3 8 8.5 8 7 8.7 7 9.5 7.7 11 8.5 11z"/>
-                        </svg>
-                        CUENTANOS QUÉ TE GUSTARIA VIVIR EN TU VIAJE...
-                        <span class="input-label-subtitle">Ejemplo 1: "Somos 2 personas, queremos ver pingüinos y almorzar centolla hoy"<br> Ejemplo 2: "Quiero un tour de naturaleza, con transporte y comida local, en medio día."</span>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" placeholder="Describe tu plan ideal...">
-                        <button class="btn-compose">
-                            <span>⚡</span>
-                            <span>Componer Itinerario</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============== MISSION SECTION ============== -->
-    <section class="mission-section" id="nosotros">
-        <p class="mission-label">NUESTRA MISIÓN</p>
-        <h2 class="mission-title">Digitalizamos la Patagonia</h2>
-        <div class="title-underline"></div>
-
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-icon">👥</div>
-                <h3>Red de Prestadores</h3>
-                <p>Conectamos guías titulados, conductores habilitados y gastronomía local que hoy operan fuera del radar digital.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon">⚙️</div>
-                <h3>Composición Dinámica</h3>
-                <p>Nuestra IA no te vende un tour estático. Crea un itinerario único combinando disponibilidad real en segundos.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon">🛡️</div>
-                <h3>Pagos Transparentes</h3>
-                <p>Reserva con seguridad. Los pagos se dividen automáticamente entre los prestadores de forma ética y formal.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============== EXTREME TERRITORY SECTION ============== -->
-    <section class="territory-section" id="como">
-        <div class="territory-content">
-            <div class="territory-text">
-                <h2>Optimización en <span class="highlight">Territorio Extremo</span></h2>
-                
-                <ul class="territory-list">
-                    <li>
-                        <div class="number">1</div>
-                        <div>
-                            <h3>Detección de Escalas</h3>
-                            <p>Integramos itinerarios de cruceros para anticipar la demanda antes de que bajen a puerto.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="number">2</div>
-                        <div>
-                            <h3>Activación Offline</h3>
-                            <p>Los conductores operan con rutas optimizadas que funcionan sin señal en zonas rurales.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="number">3</div>
-                        <div>
-                            <h3>Impacto Local Directo</h3>
-                            <p>El 90% del valor de la reserva va directamente a la economía local de Magallanes.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="territory-visual">
-                
-                
-                <div class="itinerary-item">
-                    <div class="itinerary-time">MAÑANA · 09:00 AM</div>
-                    <div class="itinerary-content">
-                        <h4>Recogida en Puerto</h4>
-                        <p>📍 Muelle Prat, Punta Arenas</p>
-                    </div>
-                </div>
-
-                <div class="itinerary-item">
-                    <div class="itinerary-time">MAÑANA · 11:30 AM</div>
-                    <div class="itinerary-content">
-                        <h4>Navegación Magdalena</h4>
-                        <p>📍 Avistamiento de Pingüinos</p>
-                    </div>
-                </div>
-
-                <button class="btn-confirm">✓ RESERVA CONFIRMADA</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============== TALENTS SECTION ============== -->
-    <section class="talents-section" id="prestadores">
-        <div class="talents-content">
-            <h2>Talento Regional Validado</h2>
-            <p>Conoce a quienes harán tu experiencia inolvidable. Profesionales certificados del Estrecho de Magallanes.</p>
-
-            <div class="talents-grid">
-                <div class="talent-card">
-                    <div class="talent-icon">👤</div>
-                    <h3>Ricardo S.</h3>
-                    <div class="talent-role">📸 GUÍA DE MONTAÑA</div>
-                    <div class="talent-location">📍 Puerto Natales</div>
-                    <div class="talent-stars">★ ★ ★ ★ ★</div>
-                </div>
-
-                <div class="talent-card">
-                    <div class="talent-icon">👤</div>
-                    <h3>Elena M.</h3>
-                    <div class="talent-role">🍽️ GASTRONOMÍA LOCAL</div>
-                    <div class="talent-location">📍 Punta Arenas</div>
-                    <div class="talent-stars">★ ★ ★ ★ ★</div>
-                </div>
-
-                <div class="talent-card">
-                    <div class="talent-icon">👤</div>
-                    <h3>Jorge P.</h3>
-                    <div class="talent-role">✈️ TRANSPORTE PRIVADO</div>
-                    <div class="talent-location">📍 Magallanes</div>
-                    <div class="talent-stars">★ ★ ★ ★ ★</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============== providers SECTION ============== -->
-    
-<section class="providers-section">
-  <div class="providers-container">
-
-    <h2 class="providers-title">
-      ¿Eres prestador turístico en Magallanes?
-    </h2>
-
-    <p class="providers-subtitle">
-      Forma parte de una nueva forma de conectar con viajeros que buscan experiencias reales.
-    </p>
-
-    <div class="providers-list-wrapper">
-      <p class="providers-list-title">Buscamos prestadores como tú:</p>
-
-      <ul class="providers-list">
-        <li>🧭 Guías turísticos</li>
-        <li>🚐 Transporte turístico (vehículo, van o minibús)</li>
-        <li>🍽️ Gastronomía local</li>
-        <li>🌿 Campos, estancias o espacios para recibir turistas</li>
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-brand">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-icon">
+          <polygon points="20,3 37,35 3,35" stroke="#00e5c8" stroke-width="2" fill="none"/>
+          <polygon points="20,13 30,31 10,31" stroke="#00e5c8" stroke-width="1.2" fill="none" opacity="0.6"/>
+        </svg>
+        <span>PATAGONIA<strong>PASS</strong></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="#como-funciona" class="nav-link">Cómo Funciona</a></li>
+        <li><a href="#prestadores" class="nav-link">Prestadores</a></li>
       </ul>
+      <a href="login.html" class="btn-intranet">Acceso Intranet</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#como-funciona">Cómo Funciona</a>
+      <a href="#prestadores">Prestadores</a>
+      <a href="login.html" class="btn-intranet-mobile">Acceso Intranet</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="inicio" class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('assets/images/hero-bg.png')"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/torres-bg.jpg')"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/sunset-bg.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up">
+        <span class="badge-dot"></span>
+        Patagonia · Magallanes · Chile
+      </div>
+      <h1 class="hero-title reveal-up">
+        Viaja mejor con<br/>
+        <span class="gradient-text">experiencias auténticas</span><br/>
+        de locales.
+      </h1>
+      <p class="hero-subtitle reveal-up">
+        Planifica tu aventura con IA y apoya directamente a los prestadores locales.
+      </p>
+
+      <!-- BUSCADOR PRINCIPAL -->
+      <div class="search-box reveal-up" id="searchBox">
+        <div class="search-label">
+          <span class="search-pulse"></span>
+          Cuéntanos qué te gustaría vivir en tu viaje...
+        </div>
+        <div class="search-row">
+          <textarea id="searchInput" placeholder='Ej: "Somos 2 personas, queremos ver pingüinos y almorzar centolla hoy"' rows="2"></textarea>
+          <button class="btn-compose" id="btnCompose" onclick="composeItinerary()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Componer Itinerario
+          </button>
+        </div>
+        <div class="search-examples">
+          <span class="example-chip" onclick="fillExample(this)">"Ver pingüinos y almorzar centolla hoy"</span>
+          <span class="example-chip" onclick="fillExample(this)">"Tour de naturaleza con transporte, medio día"</span>
+          <span class="example-chip" onclick="fillExample(this)">"Excursión Torres del Paine para 4 personas"</span>
+        </div>
+      </div>
     </div>
 
-    <p class="providers-closing">
-      Si puedes ofrecer una experiencia auténtica al viajero,
-      <strong>este espacio es para ti.</strong>
-    </p>
-
-    <p class="providers-description">
-      Únete a la primera plataforma que coordina y digitaliza tu oferta de forma ética y profesional.
-    </p>
-
-    <a href="register.html" class="providers-button">
-      Quiero ser parte
-    </a>
-
-    <p class="providers-note">
-      No necesitas conocimientos técnicos ni experiencia previa en plataformas digitales.
-    </p>
-
-  </div>
-</section>
-
-
-    <!-- ============== FOOTER ============== -->
-    <footer>
-        
-        <div class="footer-content">
-            <div class="footer-section">
-                
-                <img src="assets/images/logo.png" alt="Patagonia Pass" class="footer-logo-img">
-            <span><b>Patagonia Pass</b></span>
-                <p>El acceso inteligente a experiencias inolvidables</p>
-            </div>
-            <div class="footer-section">
-                <h4>Enlaces</h4>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#como">Cómo Funciona</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Términos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
+    <!-- Resultado del itinerario -->
+    <div id="itineraryResult" class="itinerary-result hidden">
+      <div class="itinerary-card">
+        <div class="itinerary-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Itinerario Generado
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Patagonia Pass.</p>
-        </div>
-    </footer>
+        <div class="itinerary-body" id="itineraryBody"></div>
+        <button class="btn-confirm" onclick="confirmReservation()">✓ Confirmar Reserva</button>
+      </div>
+    </div>
 
-    <script src="assets/js/main.js"></script>
+    <div class="hero-scroll-hint">
+      <span>Descubre más</span>
+      <div class="scroll-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+
+    <!-- Slide indicators -->
+    <div class="slide-indicators">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+  </section>
+
+  <!-- ========== STATS STRIP ========== -->
+  <section class="stats-strip">
+    <div class="stats-container">
+      <div class="stat-item reveal-up">
+        <span class="stat-number" data-target="90">0</span><span class="stat-suffix">%</span>
+        <span class="stat-label">Valor a economía local</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal-up">
+        <span class="stat-number" data-target="48">0</span><span class="stat-suffix">h</span>
+        <span class="stat-label">Itinerario en segundos</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal-up">
+        <span class="stat-number" data-target="120">0</span><span class="stat-suffix">+</span>
+        <span class="stat-label">Prestadores locales</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal-up">
+        <span class="stat-number" data-target="5">0</span><span class="stat-suffix">★</span>
+        <span class="stat-label">Calificación promedio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MISIÓN ========== -->
+  <section id="nosotros" class="mission-section">
+    <div class="section-container">
+      <div class="section-tag reveal-up">Nuestra Misión</div>
+      <h2 class="section-title reveal-up">Digitalizamos la <span class="gradient-text">Patagonia</span></h2>
+      <p class="section-subtitle reveal-up">Conectamos la riqueza turística de Magallanes con el mundo, usando tecnología que respeta y potencia a los actores locales.</p>
+
+      <div class="mission-grid">
+        <div class="mission-card reveal-left">
+          <div class="mission-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="18" cy="16" r="7"/><circle cx="30" cy="16" r="7" opacity="0.5"/>
+              <path d="M4 40c0-7.7 6.3-14 14-14h12c7.7 0 14 6.3 14 14"/>
+            </svg>
+          </div>
+          <h3>Red de Prestadores</h3>
+          <p>Conectamos guías titulados, conductores habilitados y gastronomía local que hoy operan fuera del radar digital.</p>
+          <div class="card-glow"></div>
+        </div>
+        <div class="mission-card reveal-up">
+          <div class="mission-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M24 4l5 10 11 1.6-8 7.8 1.9 11L24 29l-9.9 5.4L16 23.4 8 15.6l11-1.6z"/>
+            </svg>
+          </div>
+          <h3>Composición Dinámica</h3>
+          <p>Nuestra IA no te vende un tour estático. Crea un itinerario único combinando disponibilidad real en segundos.</p>
+          <div class="card-glow"></div>
+        </div>
+        <div class="mission-card reveal-right">
+          <div class="mission-icon-wrap">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 22s0-10 12-10 12 10 12 10v14H12V22z"/>
+              <path d="M20 36v-6a4 4 0 018 0v6"/>
+            </svg>
+          </div>
+          <h3>Pagos Transparentes</h3>
+          <p>Reserva con seguridad. Los pagos se dividen automáticamente entre los prestadores de forma ética y formal.</p>
+          <div class="card-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCIAS SLIDER ========== -->
+  <section class="experiences-section">
+    <div class="exp-bg" style="background-image: url('assets/images/estrecho-bg.jpg')"></div>
+    <div class="exp-overlay"></div>
+    <div class="section-container">
+      <div class="section-tag reveal-up" style="color:#fff">Experiencias</div>
+      <h2 class="section-title reveal-up" style="color:#fff">Vive la <span class="gradient-text">Patagonia Real</span></h2>
+      <div class="exp-slider-wrap">
+        <div class="exp-slider" id="expSlider">
+          <div class="exp-card">
+            <div class="exp-img" style="background-image: url('assets/images/penguins.jpg')"></div>
+            <div class="exp-info">
+              <span class="exp-tag">Fauna</span>
+              <h4>Avistamiento de Pingüinos</h4>
+              <p>Isla Magdalena · 4 horas</p>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-img" style="background-image: url('assets/images/torres-bg.jpg')"></div>
+            <div class="exp-info">
+              <span class="exp-tag">Trekking</span>
+              <h4>Torres del Paine</h4>
+              <p>Puerto Natales · Día completo</p>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-img" style="background-image: url('assets/images/punta-arenas.jpg')"></div>
+            <div class="exp-info">
+              <span class="exp-tag">Ciudad</span>
+              <h4>Tour Punta Arenas</h4>
+              <p>Magallanes · Medio día</p>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-img" style="background-image: url('assets/images/guanaco.jpg')"></div>
+            <div class="exp-info">
+              <span class="exp-tag">Naturaleza</span>
+              <h4>Fauna Patagónica</h4>
+              <p>Estancias · 6 horas</p>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-img" style="background-image: url('assets/images/estrecho-bg.jpg')"></div>
+            <div class="exp-info">
+              <span class="exp-tag">Náutico</span>
+              <h4>Estrecho de Magallanes</h4>
+              <p>Punta Arenas · 3 horas</p>
+            </div>
+          </div>
+        </div>
+        <button class="slider-btn prev" onclick="slideExp(-1)">&#8592;</button>
+        <button class="slider-btn next" onclick="slideExp(1)">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CÓMO FUNCIONA ========== -->
+  <section id="como-funciona" class="how-section">
+    <div class="section-container">
+      <div class="section-tag reveal-up">Proceso</div>
+      <h2 class="section-title reveal-up">Optimización en <span class="gradient-text">Territorio Extremo</span></h2>
+
+      <div class="how-layout">
+        <div class="how-steps">
+          <div class="how-step reveal-left" data-step="1">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h3>Detección de Escalas</h3>
+              <p>Integramos itinerarios de cruceros para anticipar la demanda antes de que bajen a puerto.</p>
+            </div>
+          </div>
+          <div class="how-step reveal-left" data-step="2">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h3>Activación Offline</h3>
+              <p>Los conductores operan con rutas optimizadas que funcionan sin señal en zonas rurales.</p>
+            </div>
+          </div>
+          <div class="how-step reveal-left" data-step="3">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h3>Impacto Local Directo</h3>
+              <p>El 90% del valor de la reserva va directamente a la economía local de Magallanes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Itinerary preview card -->
+        <div class="itinerary-preview reveal-right">
+          <div class="itin-header">
+            <div class="itin-dot green"></div>
+            <div class="itin-dot yellow"></div>
+            <div class="itin-dot red"></div>
+            <span>Itinerario · Hoy</span>
+          </div>
+          <div class="itin-timeline">
+            <div class="itin-item">
+              <div class="itin-time">09:00 AM</div>
+              <div class="itin-line"><div class="itin-circle"></div></div>
+              <div class="itin-detail">
+                <strong>Recogida en Puerto</strong>
+                <span>📍 Muelle Prat, Punta Arenas</span>
+              </div>
+            </div>
+            <div class="itin-item">
+              <div class="itin-time">11:30 AM</div>
+              <div class="itin-line"><div class="itin-circle"></div></div>
+              <div class="itin-detail">
+                <strong>Navegación Magdalena</strong>
+                <span>📍 Avistamiento de Pingüinos</span>
+              </div>
+            </div>
+            <div class="itin-item">
+              <div class="itin-time">02:00 PM</div>
+              <div class="itin-line"><div class="itin-circle"></div></div>
+              <div class="itin-detail">
+                <strong>Almuerzo Centolla</strong>
+                <span>🍽️ Restaurante Local Certificado</span>
+              </div>
+            </div>
+            <div class="itin-item">
+              <div class="itin-time">04:30 PM</div>
+              <div class="itin-line"><div class="itin-circle last"></div></div>
+              <div class="itin-detail">
+                <strong>Regreso al Hotel</strong>
+                <span>🚐 Transporte Privado</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-confirm-preview">✓ Reserva Confirmada</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRESTADORES ========== -->
+  <section id="prestadores" class="providers-section">
+    <div class="providers-bg" style="background-image: url('assets/images/hero-bg.png')"></div>
+    <div class="providers-overlay"></div>
+    <div class="section-container">
+      <div class="section-tag reveal-up" style="color:#fff">Equipo</div>
+      <h2 class="section-title reveal-up" style="color:#fff">Talento Regional <span class="gradient-text">Validado</span></h2>
+      <p class="section-subtitle reveal-up" style="color:rgba(255,255,255,0.8)">Profesionales certificados del Estrecho de Magallanes que harán tu experiencia inolvidable.</p>
+
+      <div class="providers-grid">
+        <div class="provider-card reveal-up">
+          <div class="provider-avatar">
+            <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="28" r="18" fill="#00e5c8" opacity="0.2"/><circle cx="40" cy="28" r="18" stroke="#00e5c8" stroke-width="1.5"/><path d="M16 72c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="#00e5c8" stroke-width="1.5"/></svg>
+          </div>
+          <div class="provider-info">
+            <h4>Ricardo S.</h4>
+            <span class="provider-role guide">🧭 Guía de Montaña</span>
+            <span class="provider-loc">📍 Puerto Natales</span>
+            <div class="provider-stars">★★★★★</div>
+          </div>
+          <div class="provider-badge">Verificado</div>
+        </div>
+        <div class="provider-card reveal-up" style="animation-delay:.1s">
+          <div class="provider-avatar">
+            <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="28" r="18" fill="#ff6b35" opacity="0.2"/><circle cx="40" cy="28" r="18" stroke="#ff6b35" stroke-width="1.5"/><path d="M16 72c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="#ff6b35" stroke-width="1.5"/></svg>
+          </div>
+          <div class="provider-info">
+            <h4>Elena M.</h4>
+            <span class="provider-role food">🍽️ Gastronomía Local</span>
+            <span class="provider-loc">📍 Punta Arenas</span>
+            <div class="provider-stars">★★★★★</div>
+          </div>
+          <div class="provider-badge">Verificado</div>
+        </div>
+        <div class="provider-card reveal-up" style="animation-delay:.2s">
+          <div class="provider-avatar">
+            <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="28" r="18" fill="#7c3aed" opacity="0.2"/><circle cx="40" cy="28" r="18" stroke="#7c3aed" stroke-width="1.5"/><path d="M16 72c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="#7c3aed" stroke-width="1.5"/></svg>
+          </div>
+          <div class="provider-info">
+            <h4>Jorge P.</h4>
+            <span class="provider-role transport">🚐 Transporte Privado</span>
+            <span class="provider-loc">📍 Magallanes</span>
+            <div class="provider-stars">★★★★★</div>
+          </div>
+          <div class="provider-badge">Verificado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== JOIN CTA ========== -->
+  <section class="join-section">
+    <div class="join-bg-anim"></div>
+    <div class="section-container">
+      <div class="join-content">
+        <div class="section-tag reveal-up">Únete</div>
+        <h2 class="section-title reveal-up">¿Eres prestador turístico<br/>en <span class="gradient-text">Magallanes</span>?</h2>
+        <p class="section-subtitle reveal-up">Forma parte de una nueva forma de conectar con viajeros que buscan experiencias reales.</p>
+
+        <div class="join-types reveal-up">
+          <div class="join-type">
+            <span class="join-icon">🧭</span>
+            <span>Guías turísticos</span>
+          </div>
+          <div class="join-type">
+            <span class="join-icon">🚐</span>
+            <span>Transporte turístico</span>
+          </div>
+          <div class="join-type">
+            <span class="join-icon">🍽️</span>
+            <span>Gastronomía local</span>
+          </div>
+          <div class="join-type">
+            <span class="join-icon">🌿</span>
+            <span>Campos y estancias</span>
+          </div>
+        </div>
+
+        <a href="registro.html" class="btn-join reveal-up">
+          Quiero ser parte
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="join-note reveal-up">No necesitas conocimientos técnicos ni experiencia previa en plataformas digitales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="footer-icon">
+          <polygon points="20,3 37,35 3,35" stroke="#00e5c8" stroke-width="2" fill="none"/>
+          <polygon points="20,13 30,31 10,31" stroke="#00e5c8" stroke-width="1.2" fill="none" opacity="0.6"/>
+        </svg>
+        <div>
+          <div class="footer-name">PATAGONIA PASS</div>
+          <div class="footer-tagline">El acceso inteligente a experiencias inolvidables</div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navegación</h5>
+          <a href="#inicio">Inicio</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#como-funciona">Cómo Funciona</a>
+          <a href="#prestadores">Prestadores</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos</a>
+          <a href="#">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Patagonia Pass. Todos los derechos reservados.</span>
+      <span>Hecho con ❤️ en Magallanes, Chile</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
