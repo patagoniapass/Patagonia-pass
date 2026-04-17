@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Patagonia Pass</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <style>
+        /* DASHBOARD SPECIFIC STYLES */
+        header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+        }
+
+        body {
+            background: var(--bg-light) !important;
+        }
+
+        .dashboard-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 2rem;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .sidebar h3:first-child {
+            margin-top: 0;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #f0f7fb;
+            color: var(--accent-cyan);
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .welcome-section h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .welcome-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-section h2 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-item {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .info-item-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item-value {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .info-item-status {
+            display: inline-block;
+            background: #eef9f5;
+            color: #1cbd71;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .actions-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .actions-section h2 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+
+        .action-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(23, 184, 204, 0.4);
+        }
+
+        .action-icon {
+            font-size: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .welcome-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .actions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Patagonia Pass Logo" class="logo-icon">
+                <span class="logo-text">PATAGONIA<span class="pass">PASS</span></span>
+            </a>
+            <div class="header-user">
+                <div class="user-info">
+                    <div class="user-name" id="userName">Ricardo S.</div>
+                    <div class="user-role" id="userRole">Guía de Montaña</div>
+                </div>
+                <button class="btn-acceso" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD CONTAINER -->
+    <div class="dashboard-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h3>Menú</h3>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" onclick="showSection('overview')">📊 Panel General</a></li>
+                <li><a href="#" onclick="showSection('profile')">👤 Mi Perfil</a></li>
+                <li><a href="#" onclick="showSection('bookings')">📅 Mis Reservas</a></li>
+                <li><a href="#" onclick="showSection('earnings')">💰 Mis Ganancias</a></li>
+            </ul>
+            <h3>Configuración</h3>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showSection('settings')">⚙️ Configuración</a></li>
+                <li><a href="#" onclick="showSection('help')">❓ Ayuda</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- WELCOME SECTION -->
+            <section id="overview" class="welcome-section">
+                <h1>¡Bienvenido, <span id="welcomeName">Ricardo</span>!</h1>
+                <p>Tu panel de control para gestionar tu oferta de servicios en Patagonia Pass</p>
+            </section>
+
+            <!-- STATS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">📅 Reservas Totales</div>
+                    <div class="stat-value" id="bookingsCount">24</div>
+                    <div class="stat-subtitle">Este mes: 3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">⭐ Calificación</div>
+                    <div class="stat-value" id="ratingValue">4.8</div>
+                    <div class="stat-subtitle">Basado en 24 opiniones</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">💰 Ingresos</div>
+                    <div class="stat-value" id="revenueValue">$42,5K</div>
+                    <div class="stat-subtitle">Total acumulado</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">📈 Ocupación</div>
+                    <div class="stat-value">85%</div>
+                    <div class="stat-subtitle">Mes actual</div>
+                </div>
+            </div>
+
+            <!-- INFO SECTION -->
+            <section id="profile" class="info-section">
+                <h2>👤 Información Personal</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-item-label">Nombre Completo</div>
+                        <div class="info-item-value" id="fullName">Ricardo S.</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Especialidad</div>
+                        <div class="info-item-value" id="specialty">Guía de Montaña</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Ubicación</div>
+                        <div class="info-item-value" id="location">Puerto Natales</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Email</div>
+                        <div class="info-item-value" id="emailDisplay">prestador@patagoniapass.cl</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Teléfono</div>
+                        <div class="info-item-value" id="phone">+56-9-1234-5678</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Estado</div>
+                        <div class="info-item-value">
+                            <div class="info-item-status" id="status">✓ Activo</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BOOKINGS SECTION -->
+            <section id="bookings" class="info-section" style="display: none;">
+                <h2>📅 Tus Reservas</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-item-label">Pendientes</div>
+                        <div class="info-item-value">2</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Confirmadas</div>
+                        <div class="info-item-value">15</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Completadas</div>
+                        <div class="info-item-value">7</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--text-muted);">Para ver el detalle de cada reserva, accede a la sección de Reservas en el menú del intranet.</p>
+            </section>
+
+            <!-- EARNINGS SECTION -->
+            <section id="earnings" class="info-section" style="display: none;">
+                <h2>💰 Tus Ganancias</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-item-label">Pendiente de Pago</div>
+                        <div class="info-item-value">$5,200</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Pagado Este Mes</div>
+                        <div class="info-item-value">$8,400</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-label">Próximo Pago</div>
+                        <div class="info-item-value">25 de Abril</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--text-muted);">Los pagos se realizan mensualmente el último día hábil.</p>
+            </section>
+
+            <!-- SETTINGS SECTION -->
+            <section id="settings" class="info-section" style="display: none;">
+                <h2>⚙️ Configuración de Cuenta</h2>
+                <div class="info-grid" style="grid-template-columns: 1fr;">
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">🔐</div>
+                        <span>Cambiar Contraseña</span>
+                    </button>
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">🔔</div>
+                        <span>Notificaciones</span>
+                    </button>
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">📋</div>
+                        <span>Datos de Cuenta</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- HELP SECTION -->
+            <section id="help" class="info-section" style="display: none;">
+                <h2>❓ Centro de Ayuda</h2>
+                <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-size: 1.1rem;">Preguntas Frecuentes</h3>
+                    <ul style="list-style: none; color: var(--text-muted); line-height: 2;">
+                        <li>✓ ¿Cómo agregar disponibilidad? <a href="#" style="color: var(--accent-cyan); text-decoration: none;">Ver respuesta</a></li>
+                        <li>✓ ¿Cuándo recibo mis pagos? <a href="#" style="color: var(--accent-cyan); text-decoration: none;">Ver respuesta</a></li>
+                        <li>✓ ¿Cómo editar mi perfil? <a href="#" style="color: var(--accent-cyan); text-decoration: none;">Ver respuesta</a></li>
+                    </ul>
+                </div>
+                <p style="color: var(--text-muted);">¿No encuentras lo que buscas? Contáctanos en <strong><a href="mailto:soporte@patagoniapass.cl" style="color: var(--accent-cyan); text-decoration: none;">soporte@patagoniapass.cl</a></strong></p>
+            </section>
+
+            <!-- ACTIONS SECTION -->
+            <section class="actions-section">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div class="actions-grid">
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">➕</div>
+                        <span>Agregar Disponibilidad</span>
+                    </button>
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">✏️</div>
+                        <span>Editar Perfil</span>
+                    </button>
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">📸</div>
+                        <span>Subir Fotos</span>
+                    </button>
+                    <button class="action-button" onclick="alert('Funcionalidad disponible próximamente')">
+                        <div class="action-icon">📧</div>
+                        <span>Ver Mensajes</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Verificar login
+        window.addEventListener('load', () => {
+            const loginData = localStorage.getItem('operatorLogin');
+            if (!loginData) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const data = JSON.parse(loginData).data;
+            document.getElementById('userName').textContent = data.name;
+            document.getElementById('userRole').textContent = data.role;
+            document.getElementById('welcomeName').textContent = data.name.split(' ')[0];
+            document.getElementById('fullName').textContent = data.name;
+            document.getElementById('specialty').textContent = data.role;
+            document.getElementById('location').textContent = data.location;
+            document.getElementById('emailDisplay').textContent = data.email;
+            document.getElementById('phone').textContent = data.phone;
+            document.getElementById('bookingsCount').textContent = data.totalBookings;
+            document.getElementById('revenueValue').textContent = data.revenue;
+            document.getElementById('ratingValue').textContent = data.rating;
+        });
+
+        function logout() {
+            if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                localStorage.removeItem('operatorLogin');
+                window.location.href = 'index.html';
+            }
+        }
+
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('main > section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Mostrar la sección seleccionada
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.style.display = 'block';
+            }
+
+            // Actualizar menú activo
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
