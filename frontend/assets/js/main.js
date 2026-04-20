@@ -443,8 +443,21 @@ window.addEventListener('scroll', () => {
 /* ---- PARALLAX on hero ---- */
 window.addEventListener('scroll', () => {
   const heroContent = document.querySelector('.hero-content');
+  const searchBox = document.getElementById('searchBox');
+  
   if (heroContent && window.scrollY < window.innerHeight) {
+    // El contenedor del hero se mueve un poco (parallax)
     heroContent.style.transform = `translateY(${window.scrollY * 0.25}px)`;
-    heroContent.style.opacity   = 1 - window.scrollY / (window.innerHeight * 0.7);
+    
+    // Desvanecemos el contenido general (título, subtítulo, etc.)
+    const opacityVal = 1 - window.scrollY / (window.innerHeight * 0.7);
+    heroContent.style.opacity = opacityVal;
+    
+    // EXCEPCIÓN: Forzamos que el buscador sea 100% sólido y visible
+    if (searchBox) {
+      searchBox.style.setProperty('opacity', '1', 'important');
+      searchBox.style.setProperty('visibility', 'visible', 'important');
+      searchBox.style.setProperty('transform', 'none', 'important');
+    }
   }
 });

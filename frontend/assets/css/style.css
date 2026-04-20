@@ -314,17 +314,20 @@ body {
 
 /* ---- SEARCH BOX ---- */
 .search-box {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #0a0f1e !important; /* Color sólido total (no transparente) */
+  border: 2px solid var(--teal) !important; /* Borde sólido brillante */
   border-radius: 20px;
   padding: 28px 32px;
   max-width: 720px;
   margin: 0 auto;
   text-align: left;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
-  transition: border-color 0.3s;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.9) !important;
+  transition: none !important;
+  /* Forzamos visibilidad absoluta */
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  z-index: 100 !important;
 }
 .search-box:focus-within {
   border-color: rgba(0,229,200,0.4);

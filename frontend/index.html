@@ -9,6 +9,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* 
+       AJUSTE ESPECÍFICO: BUSCADOR FIJO Y FULL COLOR
+       Sobrescribimos cualquier efecto de desvanecimiento para el buscador.
+    */
+    #searchBox {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
+      background: rgba(10, 15, 30, 0.98) !important; /* Casi opaco para máxima visibilidad */
+      border: 2px solid rgba(0, 229, 200, 0.6) !important; /* Borde más grueso y brillante */
+      box-shadow: 0 32px 80px rgba(0,0,0,0.8) !important; /* Sombra más pesada */
+      transition: none !important; /* Evitamos cualquier transición que lo haga volatil */
+    }
+    
+    /* Aseguramos que el buscador ignore el desvanecimiento del contenedor padre (hero-content) */
+    .hero-content {
+      transform-style: preserve-3d;
+    }
+  </style>
 </head>
 <body>
 
@@ -78,8 +98,8 @@
         Planifica tu aventura con IA y apoya directamente a los prestadores locales.
       </p>
 
-      <!-- BUSCADOR PRINCIPAL -->
-      <div class="search-box reveal-up" id="searchBox">
+      <!-- BUSCADOR PRINCIPAL - FIJO Y FULL COLOR -->
+      <div class="search-box" id="searchBox">
         <div class="search-label">
           <span class="search-pulse"></span>
           Cuéntanos qué te gustaría vivir en tu viaje...
